@@ -1,4 +1,6 @@
 import argparse
+import sys
+
 import boto3
 import logging
 import botocore
@@ -254,6 +256,10 @@ if __name__ == '__main__':
     parser.add_argument('-s', '--sync', help='Sync your config file with the AWS deployments', default=False, action='store_true')
     parser.add_argument('-n', '--env-name', help='The deployment environment name to create or connect to it.', default="default")
     parser.add_argument('-f', '--file-name', help='The deployment environment file name to create or connect to it. In case of deployment must include the AWS keys, see aws_config.json example file.', default="aws_config.json")
+
+    if len(sys.argv) == 1:
+        parser.print_help(sys.stderr)
+        sys.exit(1)
 
     args = parser.parse_args()
 

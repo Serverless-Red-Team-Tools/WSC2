@@ -79,7 +79,6 @@ class SocksProxy5(StreamRequestHandler):
                 payload = {'service': 'socks5', 'host': address, 'port': int(port)}
                 ws_connection.send_action('fast_sendmsg', payload, action_options={'to': self.client_id})
                 response = recv_response(ws_connection)
-                print('response 1-> {}'.format(response))
                 if 'payload' in response and 'result' in response['payload'] and response['payload']['result'] == 'KO':
                     self.server.close_request(self.request)
                     return

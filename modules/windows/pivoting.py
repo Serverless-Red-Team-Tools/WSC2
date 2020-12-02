@@ -14,7 +14,7 @@ class Module(BaseModule):
     @staticmethod
     def get_commands() -> [[str]]:
         return [
-            ['pivot_winrm', '<client> <remote_host> <mode>', 'Executes an instance of the client in the remote host.\nMode should be: [direct, relay]']
+            # ['pivot_winrm', '<client> <remote_host> <mode>', 'Executes an instance of the client in the remote host.\nMode should be: [direct, relay]']
         ]
 
     def get_client_code(self, client_type):

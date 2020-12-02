@@ -1,4 +1,5 @@
 import os
+import string
 import threading
 import shlex
 from os import listdir
@@ -48,7 +49,7 @@ class Master:
             count = 0
             rows = []
             for client in clients:
-                rows.append([count, client['userName']['S'], client['hostname']['S'], client['whoami']['S'], client['domain_name']['S'], client['ip']['S'].replace(', ', '\n'), client['connectionId']['S']])
+                rows.append([count, client['userName']['S'], client['hostname']['S'], client['whoami']['S'], client['domain_name']['S'],  ''.join(filter(lambda x: x in string.printable, client['ip']['S'].replace(', ', '\n'))), client['connectionId']['S']])
                 count += 1
             print(tabulate(rows, headers=['#', 'Name', 'Hostname', 'User', 'Domain', 'IP', 'ClientID']))
             print()

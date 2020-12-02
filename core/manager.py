@@ -24,7 +24,7 @@ class C2Manager:
         self.environment_name = environment_name
         self.connector_factory = connector_factory
         self.master_connection = self.create_connection(CONNECTION_TYPE_MASTER, 'master', master_password)
-        print('[+] Connected to "{}"'.format(self.master_connection.connection_string))
+        print('[+] Connected to "{}"'.format(self.master_connection.connection_string.split('&')[0]))
 
     def create_connection(self, connection_type, connection_name, master_password=None):
         return self.connector_factory.create(connection_type, connection_name, master_password)
