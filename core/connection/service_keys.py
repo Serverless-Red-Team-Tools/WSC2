@@ -1,5 +1,0 @@
-KEY_SERVICE = 'service'
-KEY_ACTION = 'action'
-KEY_PAYLOAD = 'payload'
-KEY_FROM = 'from'
-KEY_SEND_MESSAGE_TO = 'to'
