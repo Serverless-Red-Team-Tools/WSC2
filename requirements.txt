@@ -1,0 +1,7 @@
+prompt_toolkit
+requests
+tabulate
+boto3
+botocore
+websocket_client
+
